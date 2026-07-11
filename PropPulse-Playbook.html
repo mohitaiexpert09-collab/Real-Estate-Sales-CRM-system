@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PropPulse — Product & Sales Playbook</title>
+<style>
+  :root {
+    --paper: #F5F6F8;
+    --surface: #FFFFFF;
+    --surface-2: #FBFCFD;
+    --ink: #101826;
+    --ink-soft: #38445A;
+    --muted: #6A7688;
+    --line: #E3E7ED;
+    --line-strong: #CFD6E0;
+    --accent: #0E9F6E;
+    --accent-ink: #0A7D57;
+    --accent-soft: #E6F6EF;
+    --brand: #3B5BDB;
+    --brand-soft: #EBEFFC;
+    --gold: #B7791F;
+    --hot: #DA3E44;
+    --warm: #C98A12;
+    --cold: #7C889A;
+    --shadow: 0 1px 2px rgba(16,24,38,.04), 0 8px 24px rgba(16,24,38,.06);
+    --shadow-lift: 0 2px 4px rgba(16,24,38,.06), 0 18px 40px rgba(16,24,38,.10);
+
+    --font-body: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    --font-display: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    --font-mono: "Cascadia Mono", "Cascadia Code", ui-monospace, "SFMono-Regular", "Segoe UI Mono", Consolas, monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper: #0A0F1A;
+      --surface: #111A28;
+      --surface-2: #0E1622;
+      --ink: #E9EEF6;
+      --ink-soft: #B0BBCB;
+      --muted: #7B8798;
+      --line: #222E3E;
+      --line-strong: #303E52;
+      --accent: #34D399;
+      --accent-ink: #6EE7B7;
+      --accent-soft: rgba(52,211,153,.12);
+      --brand: #7C97FF;
+      --brand-soft: rgba(124,151,255,.12);
+      --gold: #E0A857;
+      --hot: #F16469;
+      --warm: #E0A857;
+      --cold: #8A94A6;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
+      --shadow-lift: 0 2px 4px rgba(0,0,0,.4), 0 18px 40px rgba(0,0,0,.5);
+    }
+  }
+  :root[data-theme="light"] {
+    --paper: #F5F6F8; --surface: #FFFFFF; --surface-2: #FBFCFD; --ink: #101826; --ink-soft: #38445A;
+    --muted: #6A7688; --line: #E3E7ED; --line-strong: #CFD6E0; --accent: #0E9F6E; --accent-ink: #0A7D57;
+    --accent-soft: #E6F6EF; --brand: #3B5BDB; --brand-soft: #EBEFFC; --gold: #B7791F;
+    --hot: #DA3E44; --warm: #C98A12; --cold: #7C889A;
+    --shadow: 0 1px 2px rgba(16,24,38,.04), 0 8px 24px rgba(16,24,38,.06);
+    --shadow-lift: 0 2px 4px rgba(16,24,38,.06), 0 18px 40px rgba(16,24,38,.10);
+  }
+  :root[data-theme="dark"] {
+    --paper: #0A0F1A; --surface: #111A28; --surface-2: #0E1622; --ink: #E9EEF6; --ink-soft: #B0BBCB;
+    --muted: #7B8798; --line: #222E3E; --line-strong: #303E52; --accent: #34D399; --accent-ink: #6EE7B7;
+    --accent-soft: rgba(52,211,153,.12); --brand: #7C97FF; --brand-soft: rgba(124,151,255,.12); --gold: #E0A857;
+    --hot: #F16469; --warm: #E0A857; --cold: #8A94A6;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
+    --shadow-lift: 0 2px 4px rgba(0,0,0,.4), 0 18px 40px rgba(0,0,0,.5);
+  }
+
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body);
+    font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  h1,h2,h3,h4 { font-family: var(--font-display); text-wrap: balance; letter-spacing: -0.02em; line-height: 1.12; margin: 0; }
+  p { margin: 0; }
+  a { color: var(--brand); text-decoration: none; }
+  strong { font-weight: 650; color: var(--ink); }
+
+  .eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--accent-ink); font-weight: 600; }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 0 28px; }
+  .col { max-width: 760px; }
+
+  /* ---- top bar ---- */
+  .topbar { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px);
+    background: color-mix(in srgb, var(--paper) 82%, transparent); border-bottom: 1px solid var(--line); }
+  .topbar-inner { max-width: 940px; margin: 0 auto; padding: 12px 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .brand-tag { display: flex; align-items: center; gap: 10px; font-weight: 650; letter-spacing: -0.01em; }
+  .brand-mark { width: 26px; height: 26px; border-radius: 8px; display: grid; place-items: center; color: #fff;
+    background: linear-gradient(135deg, var(--brand), var(--accent)); font-size: 15px; }
+  .toggle { font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; color: var(--ink-soft);
+    background: var(--surface); border: 1px solid var(--line-strong); padding: 6px 12px; border-radius: 999px; cursor: pointer; }
+  .toggle:hover { border-color: var(--accent); color: var(--ink); }
+  .toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ---- hero (committed dark) ---- */
+  .hero { background:
+      radial-gradient(120% 120% at 78% -10%, rgba(52,211,153,.22), transparent 55%),
+      radial-gradient(90% 90% at 0% 110%, rgba(59,91,219,.28), transparent 60%),
+      #0B1220;
+    color: #E8EEF7; border-bottom: 1px solid #1B2739; }
+  .hero-inner { max-width: 940px; margin: 0 auto; padding: 78px 28px 66px; }
+  .hero .eyebrow { color: #6EE7B7; }
+  .hero h1 { font-size: clamp(44px, 8vw, 78px); font-weight: 800; margin: 18px 0 0; color: #F3F7FC; }
+  .hero .lede { font-size: clamp(18px, 2.4vw, 22px); color: #AFC0D4; max-width: 620px; margin: 20px 0 0; line-height: 1.5; }
+  .hero-meta { margin-top: 14px; font-family: var(--font-mono); font-size: 12.5px; letter-spacing: .04em; color: #7E93AC; }
+  .proof { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 44px;
+    background: #1B2739; border: 1px solid #1B2739; border-radius: 16px; overflow: hidden; }
+  .proof > div { background: #0E1728; padding: 22px 20px; }
+  .proof .n { font-size: 30px; font-weight: 750; color: #F3F7FC; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+  .proof .n span { color: #34D399; }
+  .proof .l { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: #8296AE; margin-top: 6px; }
+
+  /* ---- sections ---- */
+  section { padding: 64px 0; border-bottom: 1px solid var(--line); }
+  section.alt { background: var(--surface-2); }
+  .kicker { display: flex; align-items: baseline; gap: 14px; margin-bottom: 8px; }
+  .kicker .num { font-family: var(--font-mono); font-size: 12px; color: var(--muted); letter-spacing: .1em; }
+  h2 { font-size: clamp(27px, 4vw, 36px); font-weight: 760; }
+  .sub { color: var(--ink-soft); font-size: 18px; margin-top: 14px; max-width: 680px; }
+  .body-p { color: var(--ink-soft); margin-top: 16px; }
+  .body-p + .body-p { margin-top: 12px; }
+
+  /* ---- cards ---- */
+  .grid { display: grid; gap: 16px; margin-top: 32px; }
+  .g2 { grid-template-columns: repeat(2, 1fr); }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 22px; box-shadow: var(--shadow); }
+  .card h3 { font-size: 18px; font-weight: 680; letter-spacing: -0.01em; }
+  .card p { color: var(--ink-soft); font-size: 15.5px; margin-top: 8px; line-height: 1.6; }
+  .card .tag { font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+
+  .feature { display: grid; grid-template-columns: 150px 1fr; gap: 24px; padding: 26px 0; border-top: 1px solid var(--line); }
+  .feature:first-of-type { border-top: none; }
+  .feature .fname { font-weight: 700; font-size: 17px; letter-spacing: -0.01em; }
+  .feature .froute { font-family: var(--font-mono); font-size: 12px; color: var(--accent-ink); margin-top: 6px; }
+  .feature .what { color: var(--ink-soft); font-size: 15.5px; }
+  .feature .sell { margin-top: 10px; font-size: 14.5px; color: var(--ink);
+    background: var(--accent-soft); border-radius: 10px; padding: 10px 13px; border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent); }
+  .feature .sell b { color: var(--accent-ink); font-weight: 650; }
+
+  /* value loop */
+  .loop { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 30px; }
+  .loop .step { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 16px; position: relative; box-shadow: var(--shadow); }
+  .loop .step .s-n { font-family: var(--font-mono); font-size: 12px; color: var(--accent); font-weight: 600; }
+  .loop .step h4 { font-size: 15.5px; margin-top: 8px; font-weight: 680; }
+  .loop .step p { font-size: 13.5px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+
+  /* agents */
+  .agent { display: flex; gap: 14px; align-items: flex-start; }
+  .agent .em { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; font-size: 22px; flex: none;
+    background: linear-gradient(135deg, var(--brand-soft), var(--accent-soft)); border: 1px solid var(--line); }
+  .agent h3 { font-size: 16.5px; }
+  .agent .role { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin-top: 3px; }
+
+  /* callout */
+  .callout { margin-top: 30px; background: linear-gradient(135deg, var(--brand-soft), var(--accent-soft));
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent); border-radius: 18px; padding: 28px; }
+  .callout .big { font-size: clamp(22px, 3.4vw, 30px); font-weight: 750; letter-spacing: -0.02em; line-height: 1.25; }
+  .callout .big span { color: var(--accent-ink); }
+  .callout p { color: var(--ink-soft); margin-top: 12px; font-size: 15.5px; }
+
+  /* pricing */
+  .price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; }
+  .price { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 24px; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+  .price.feat { border-color: var(--accent); box-shadow: var(--shadow-lift); position: relative; }
+  .price.feat::before { content: "MOST POPULAR"; position: absolute; top: -10px; left: 24px; font-family: var(--font-mono);
+    font-size: 10px; letter-spacing: .1em; background: var(--accent); color: #04150E; padding: 3px 9px; border-radius: 6px; font-weight: 700; }
+  .price .pname { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .price .amt { font-size: 30px; font-weight: 780; letter-spacing: -0.03em; margin-top: 10px; font-variant-numeric: tabular-nums; }
+  .price .amt small { font-size: 14px; font-weight: 500; color: var(--muted); letter-spacing: 0; }
+  .price ul { list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-direction: column; gap: 9px; }
+  .price li { font-size: 14.5px; color: var(--ink-soft); padding-left: 24px; position: relative; line-height: 1.45; }
+  .price li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+
+  /* verticals */
+  .vert { display: grid; grid-template-columns: 130px 1fr; gap: 20px; padding: 16px 0; border-top: 1px solid var(--line); align-items: baseline; }
+  .vert:first-of-type { border-top: none; }
+  .vert .vname { font-weight: 680; }
+  .vert .vagents { color: var(--ink-soft); font-size: 15px; }
+  .vert .vagents b { color: var(--ink); font-weight: 620; }
+
+  /* talk track */
+  .track { margin-top: 30px; display: flex; flex-direction: column; gap: 2px; counter-reset: step; }
+  .tstep { display: grid; grid-template-columns: 42px 1fr; gap: 18px; padding: 18px 0; border-top: 1px solid var(--line); }
+  .tstep:first-child { border-top: none; }
+  .tstep .tn { font-family: var(--font-mono); font-size: 15px; color: var(--accent); font-weight: 600; padding-top: 2px; font-variant-numeric: tabular-nums; }
+  .tstep .do { font-weight: 650; font-size: 16px; }
+  .tstep .say { margin-top: 8px; color: var(--ink-soft); font-size: 15px; border-left: 3px solid var(--line-strong); padding-left: 14px; font-style: italic; }
+  .tstep .say b { font-style: normal; color: var(--ink); }
+
+  /* faq */
+  .faq { margin-top: 28px; display: flex; flex-direction: column; gap: 0; }
+  .qa { padding: 18px 0; border-top: 1px solid var(--line); }
+  .qa:first-child { border-top: none; }
+  .qa .q { font-weight: 680; font-size: 16.5px; }
+  .qa .a { color: var(--ink-soft); font-size: 15.5px; margin-top: 8px; }
+
+  /* chips */
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .chip { font-family: var(--font-mono); font-size: 11.5px; letter-spacing: .03em; padding: 5px 11px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--ink-soft); background: var(--surface); }
+  .chip.hot { color: var(--hot); border-color: color-mix(in srgb, var(--hot) 40%, transparent); }
+  .chip.warm { color: var(--warm); border-color: color-mix(in srgb, var(--warm) 40%, transparent); }
+  .chip.cold { color: var(--cold); border-color: color-mix(in srgb, var(--cold) 40%, transparent); }
+
+  .stack-note { font-family: var(--font-mono); font-size: 13px; color: var(--muted); margin-top: 20px; line-height: 1.7; }
+  .stack-note b { color: var(--ink); font-weight: 600; }
+
+  footer { padding: 46px 0 60px; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: center; justify-content: space-between; }
+
+  @media (max-width: 720px) {
+    body { font-size: 16px; }
+    .proof { grid-template-columns: 1fr; }
+    .g2, .g3, .price-grid { grid-template-columns: 1fr; }
+    .loop { grid-template-columns: 1fr 1fr; }
+    .feature { grid-template-columns: 1fr; gap: 8px; }
+    .vert { grid-template-columns: 1fr; gap: 4px; }
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal { animation: rise .7s cubic-bezier(.2,.7,.2,1) both; }
+    @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+  }
+</style>
+</head>
+<body>
+
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand-tag"><span class="brand-mark">◆</span> PropPulse <span style="color:var(--muted);font-weight:500">· Playbook</span></div>
+    <button class="toggle" id="themeBtn" type="button">◐ Theme</button>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="hero-inner reveal">
+    <div class="eyebrow">AI Lead-to-Deal CRM · Built for Indian Real Estate</div>
+    <h1>PropPulse</h1>
+    <p class="lede">A CRM that captures every lead, replies on WhatsApp in seconds, qualifies with AI, and never lets a follow-up drop — so agencies convert more of the ad spend they already pay for.</p>
+    <div class="hero-meta">Product &amp; sales playbook · for the founding team &amp; client walkthroughs</div>
+    <div class="proof">
+      <div><div class="n">4 hrs → <span>45 sec</span></div><div class="l">First-response time</div></div>
+      <div><div class="n"><span>100%</span> of leads</div><div class="l">Answered, day or night</div></div>
+      <div><div class="n"><span>0</span> dropped</div><div class="l">Follow-ups that leak</div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="wrap col">
+      <div class="kicker"><span class="num">01</span><span class="eyebrow">The one-line pitch</span></div>
+      <h2>What PropPulse is, in a sentence you can say at the door</h2>
+      <p class="sub">“It’s an AI sales assistant for your property business — it answers every enquiry from 99acres, MagicBricks, Facebook and your website within seconds on WhatsApp, tells your team which leads are hot, and chases every follow-up automatically so no deal slips.”</p>
+      <p class="body-p">Real-estate agencies in India don’t have a <em>lead</em> problem — they pay portals and run ads for plenty of leads. They have a <strong>speed and follow-up</strong> problem. A buyer enquires on three projects at once; whoever calls first usually wins. If your agent is showing a flat, at lunch, or asleep, that lead cools — and the money you spent to get it is wasted. PropPulse closes that gap with software instead of hiring more people.</p>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="col">
+        <div class="kicker"><span class="num">02</span><span class="eyebrow">Why they’ll pay</span></div>
+        <h2>The problem we sell against</h2>
+        <p class="sub">Three leaks quietly drain every agency. PropPulse plugs all three — and that’s the whole ROI story.</p>
+      </div>
+      <div class="grid g3">
+        <div class="card"><span class="tag">Leak 01</span><h3>Slow first response</h3><p>The average portal lead waits hours for a callback. Buyers move on to the developer or broker who replied in the first minute. Ad money spent, lead lost.</p></div>
+        <div class="card"><span class="tag">Leak 02</span><h3>Dropped follow-ups</h3><p>“I’ll call them tomorrow” becomes never. Warm leads sit in a WhatsApp scroll or a notebook and go cold with zero system to chase them.</p></div>
+        <div class="card"><span class="tag">Leak 03</span><h3>No idea who’s hot</h3><p>Agents treat every enquiry the same, spending time on window-shoppers while a ready, loan-approved buyer waits in the same list.</p></div>
+      </div>
+      <div class="callout">
+        <div class="big">One extra booking a year <span>pays for the whole system</span> — several times over.</div>
+        <p>A single ₹1 crore flat earns the agency roughly ₹2–5 lakh in brokerage. PropPulse costs a one-time setup plus a modest monthly fee. If it rescues even <strong>one</strong> deal that would otherwise have leaked, it has already paid for a year. Everything after that is margin. That is the entire sales argument — you’re not selling software, you’re selling recovered bookings.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="col">
+        <div class="kicker"><span class="num">03</span><span class="eyebrow">How it works, end to end</span></div>
+        <h2>The value loop every lead runs through</h2>
+        <p class="sub">This is the spine of the product. When you demo, you’re showing this loop firing on a real lead in front of the client.</p>
+      </div>
+      <div class="loop">
+        <div class="step"><div class="s-n">01</div><h4>Capture</h4><p>Every lead from 99acres, MagicBricks, Housing, Facebook, website &amp; WhatsApp lands in one inbox.</p></div>
+        <div class="step"><div class="s-n">02</div><h4>Respond</h4><p>An AI WhatsApp reply goes out in under a minute — personalised to the project &amp; budget.</p></div>
+        <div class="step"><div class="s-n">03</div><h4>Qualify</h4><p>AI scores the lead Hot / Warm / Cold with intent, timeline and a next action.</p></div>
+        <div class="step"><div class="s-n">04</div><h4>Nurture</h4><p>Follow-up agents chase quiet leads and book site visits — automatically.</p></div>
+        <div class="step"><div class="s-n">05</div><h4>Close</h4><p>The deal moves through a visual pipeline to Booked, with value tracked in ₹.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="col">
+        <div class="kicker"><span class="num">04</span><span class="eyebrow">Inside the product</span></div>
+        <h2>Every screen, and what it does for the client</h2>
+        <p class="sub">Walk these in order in a demo. For each, the “sell” line is what you actually say to the agency owner.</p>
+      </div>
+      <div style="margin-top:26px">
+        <div class="feature">
+          <div><div class="fname">Dashboard</div><div class="froute">/</div></div>
+          <div>
+            <div class="what">The owner’s cockpit: leads captured, average first-response time (with the “4 hrs → 45 sec” before/after), conversion rate, live pipeline value in ₹, leads rescued from going cold, and revenue attributed — plus charts for leads-by-source, the pipeline funnel and response-time trend.</div>
+            <div class="sell"><b>Say:</b> “In one glance you see how fast your team is responding and how much money is live in your pipeline right now.”</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div><div class="fname">Leads Inbox</div><div class="froute">/leads</div></div>
+          <div>
+            <div class="what">Every enquiry in one list with a coloured source badge, the AI score, tier, current stage and the assigned agent. Sortable so the team works the hottest leads first.</div>
+            <div class="sell"><b>Say:</b> “No more leads scattered across portals, email and three WhatsApp numbers. Everything’s here, ranked.”</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div><div class="fname">Lead Detail</div><div class="froute">/leads/:id</div></div>
+          <div>
+            <div class="what">The AI qualification summary (budget, locality, intent, timeline), the full WhatsApp conversation thread, an AI-suggested reply the agent can edit and send, a “book site visit” action, and a complete activity timeline.</div>
+            <div class="sell"><b>Say:</b> “Your agent opens one screen and knows exactly who this buyer is and what to say next — the AI already drafted it.”</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div><div class="fname">Pipeline</div><div class="froute">/pipeline</div></div>
+          <div>
+            <div class="what">A visual Kanban board — New → Qualified → Site Visit → Negotiation → Booked → Lost. Move a deal a stage and the dashboard value updates instantly.</div>
+            <div class="sell"><b>Say:</b> “This is your whole sales team’s week on one board. Nothing hides in someone’s head.”</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div><div class="fname">AI Agents</div><div class="froute">/agents</div></div>
+          <div>
+            <div class="what">A roster of five specialist AI agents — each with a job, a live count of actions taken, and a “Run now” button. This is the “superpower” screen (detailed in section 05).</div>
+            <div class="sell"><b>Say:</b> “Think of these as five tireless junior staff who never sleep, never forget, and cost you almost nothing.”</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div><div class="fname">Automations</div><div class="froute">/automations</div></div>
+          <div>
+            <div class="what">Six always-on automations with on/off toggles and run counts: instant reply, AI qualification, follow-up drip, site-visit reminder, cold-lead reactivation, and a marketing engine (roadmap).</div>
+            <div class="sell"><b>Say:</b> “These run 24×7 in the background. You switch on what you want; the system does the rest.”</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div><div class="fname">✨ Copilot</div><div class="froute">floating · every page</div></div>
+          <div>
+            <div class="what">A chat assistant in the corner of every screen that reads the whole CRM and takes real action on command — “give me a pipeline summary”, “send a follow-up to all hot leads in Pune”, “book site visits for my top 3”. It actually does it, then shows what it did.</div>
+            <div class="sell"><b>Say:</b> “Talk to your CRM like you’d talk to your best sales manager — and it executes.”</div>
+          </div>
+        </div>
+        <div class="feature">
+          <div><div class="fname">⚡ Simulate Lead</div><div class="froute">top-right button</div></div>
+          <div>
+            <div class="what">The money shot. One click injects a fresh portal lead and plays the whole chain live — capture → AI score → auto WhatsApp reply → lands in the pipeline — in about two seconds, on screen.</div>
+            <div class="sell"><b>Say:</b> “Watch — a lead just came in from 99acres…” then click. Nothing sells like seeing it fire.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="col">
+        <div class="kicker"><span class="num">05</span><span class="eyebrow">The superpower</span></div>
+        <h2>The AI layer — five agents, one Copilot</h2>
+        <p class="sub">This is what separates PropPulse from an ordinary CRM. Each agent is a role with its own toolkit; together they run the sales desk.</p>
+      </div>
+      <div class="grid g2">
+        <div class="card"><div class="agent"><span class="em">🎯</span><div><h3>Lead Qualifier</h3><div class="role">Real-time · AI scoring</div></div></div><p>Reads each new enquiry and assigns a Hot / Warm / Cold score with intent, timeline and a recommended next action — so the team works the best leads first.</p></div>
+        <div class="card"><div class="agent"><span class="em">💬</span><div><h3>Instant Responder</h3><div class="role">Real-time · WhatsApp</div></div></div><p>The moment a lead lands, drafts and sends a personalised WhatsApp reply. No enquiry ever waits while a competitor calls first.</p></div>
+        <div class="card"><div class="agent"><span class="em">🔁</span><div><h3>Follow-up Agent</h3><div class="role">Scheduled · nurture</div></div></div><p>Finds leads that replied but are still waiting on us and sends a timely, personalised nudge — the classic dropped follow-up, plugged.</p></div>
+        <div class="card"><div class="agent"><span class="em">📅</span><div><h3>Site-Visit Scheduler</h3><div class="role">Real-time · booking</div></div></div><p>Spots hot, qualified leads with no visit booked and schedules one, with an automatic WhatsApp confirmation and reminder.</p></div>
+        <div class="card"><div class="agent"><span class="em">📊</span><div><h3>Sales Copilot</h3><div class="role">On-demand · conversational</div></div></div><p>Ask it anything — summaries, hottest leads, bulk follow-ups — and it reads the CRM and takes real action from the ✨ chat.</p></div>
+        <div class="card" style="background:var(--surface-2);border-style:dashed"><div class="agent"><span class="em">➕</span><div><h3>Add your own</h3><div class="role">config, not code</div></div></div><p>A new agent is one entry in a config file — a role, a toolkit, a trigger. This is exactly how the same product re-points to any business (section 08).</p></div>
+      </div>
+      <div class="callout" style="margin-top:26px">
+        <div class="big">It stays live even if the internet drops.</div>
+        <p>The AI is <strong>provider-agnostic</strong>: it runs on OpenAI (GPT-4o-mini) or Anthropic (Claude), and if a key ever fails or a network hiccups mid-demo, it falls back to a built-in engine that still performs real actions. Translation for the client: <b>the demo can’t break</b>, and you’re never locked to one AI vendor’s pricing.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="col">
+        <div class="kicker"><span class="num">06</span><span class="eyebrow">Under the hood (plain language)</span></div>
+        <h2>What it’s built on — and what “phase 2” means</h2>
+        <p class="body-p">You don’t need to be technical to sell this, but here’s the honest picture so you’re never caught out. PropPulse is a modern web app — it runs in any browser, nothing to install for the client. It’s built on <strong>Next.js</strong> (the same framework behind many production apps), with a clean database underneath and charts drawn with a proper data-viz library. The AI features call OpenAI or Claude live.</p>
+        <p class="body-p">In the demo, WhatsApp is shown as a realistic in-app chat thread and leads are seeded with realistic Mumbai / Pune / Bangalore projects and ₹ budgets — so every screen looks live from the first second. When a client signs, <strong>phase 2</strong> is the paid integration work that makes it their real business:</p>
+      </div>
+      <div class="grid g3">
+        <div class="card"><span class="tag">Phase 2</span><h3>Real WhatsApp</h3><p>Connect an official WhatsApp Business number via a provider (AiSensy, Gupshup, Meta Cloud API or Twilio) so replies go to real buyers.</p></div>
+        <div class="card"><span class="tag">Phase 2</span><h3>Portal &amp; ad feeds</h3><p>Live hooks from 99acres, MagicBricks, Housing and Facebook Lead Ads so enquiries flow in automatically, not by hand.</p></div>
+        <div class="card"><span class="tag">Phase 2</span><h3>Their data &amp; team</h3><p>Import their existing leads, add each agent with a login, and brand the whole system with the agency’s name and colours.</p></div>
+      </div>
+      <p class="stack-note"><b>The honest framing for clients:</b> what you’re showing today is the complete working product on demo data. Setup is where we connect it to <em>their</em> WhatsApp, <em>their</em> portals and <em>their</em> team — that’s the value in the setup fee, and it’s deliberately not a five-minute job.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="col">
+        <div class="kicker"><span class="num">07</span><span class="eyebrow">How we package &amp; price</span></div>
+        <h2>What the client pays, and what they get</h2>
+        <p class="sub">A one-time setup fee to build and connect their system, plus a monthly fee that covers the running costs and support. Figures below are the starting frame — adjust per client size.</p>
+      </div>
+      <div class="price-grid">
+        <div class="price">
+          <div class="pname">Starter setup</div>
+          <div class="amt">₹50,000 <small>one-time</small></div>
+          <ul>
+            <li>Branded CRM with their name &amp; colours</li>
+            <li>One WhatsApp Business number connected</li>
+            <li>Up to ~5 agents onboarded &amp; trained</li>
+            <li>Existing lead data imported</li>
+            <li>Core automations + all 5 AI agents live</li>
+          </ul>
+        </div>
+        <div class="price feat">
+          <div class="pname">Pro setup</div>
+          <div class="amt">₹1,00,000 <small>one-time</small></div>
+          <ul>
+            <li>Everything in Starter</li>
+            <li>Portal &amp; Facebook lead-feed integrations</li>
+            <li>Custom pipeline stages &amp; automations</li>
+            <li>Larger team, multiple projects</li>
+            <li>Priority onboarding &amp; tuning</li>
+          </ul>
+        </div>
+        <div class="price">
+          <div class="pname">Monthly retainer</div>
+          <div class="amt">example ₹10k–20k <small>/ month</small></div>
+          <ul>
+            <li>WhatsApp Business API messaging</li>
+            <li>AI usage (scoring, replies, Copilot)</li>
+            <li>Hosting &amp; maintenance</li>
+            <li>Ongoing support &amp; small changes</li>
+            <li>New agents / automations on request</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout">
+        <div class="big">Anchor every price to <span>one recovered booking.</span></div>
+        <p>Before you say a number, establish the math: “What does one closed flat earn you in brokerage?” Once they say ₹2–3 lakh, the ₹50k–₹1L setup sounds small — because it is, against a single deal the system will save them this quarter.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="col">
+        <div class="kicker"><span class="num">08</span><span class="eyebrow">The bigger opportunity</span></div>
+        <h2>The same engine sells to any business</h2>
+        <p class="sub">This is why the product is a platform, not a one-off. An “agent” is just a role + a toolkit + a trigger held in a config file. Swap the roster and PropPulse becomes a different product — the CRM, screens and Copilot don’t change.</p>
+      </div>
+      <div style="margin-top:20px">
+        <div class="vert"><div class="vname">🏠 Real Estate</div><div class="vagents"><b>Lead Qualifier · Instant Responder · Site-Visit Scheduler</b> — the build you’re demoing today.</div></div>
+        <div class="vert"><div class="vname">🦷 Clinics</div><div class="vagents"><b>Appointment Booker · No-show Recovery</b> — fill the calendar, win back cancellations.</div></div>
+        <div class="vert"><div class="vname">🏋 Gyms &amp; Salons</div><div class="vagents"><b>Membership Renewal · Win-back Agent</b> — chase renewals and lapsed members automatically.</div></div>
+        <div class="vert"><div class="vname">🚗 Dealerships</div><div class="vagents"><b>Test-Drive Scheduler · Finance Follow-up</b> — same loop, applied to car buyers.</div></div>
+      </div>
+      <p class="stack-note"><b>How to use this on a visit:</b> if the person you’re meeting isn’t in real estate — or knows someone who runs a clinic or gym — the pitch is identical. “We built this for property, but it’s really a lead-response engine. We can point it at your business the same way.” That’s how one demo becomes many deals.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="col">
+        <div class="kicker"><span class="num">09</span><span class="eyebrow">Run the room</span></div>
+        <h2>The 5-minute demo script</h2>
+        <p class="sub">Open <span style="font-family:var(--font-mono);font-size:14px;color:var(--accent-ink)">start-demo.bat</span> first — it launches the server and opens the browser. Keep the black window open. Then follow these beats.</p>
+      </div>
+      <div class="track">
+        <div class="tstep"><div class="tn">1</div><div><div class="do">Open on the Dashboard.</div><div class="say"><b>Say:</b> “This is your whole business on one screen — how fast you’re answering leads, and how much money is live in your pipeline right now.”</div></div></div>
+        <div class="tstep"><div class="tn">2</div><div><div class="do">Click ⚡ Simulate inbound lead.</div><div class="say"><b>Say:</b> “A buyer just enquired on 99acres…” — let them watch the capture → score → instant WhatsApp reply → pipeline chain fire. This is the moment that sells.</div></div></div>
+        <div class="tstep"><div class="tn">3</div><div><div class="do">Open that lead’s detail.</div><div class="say"><b>Say:</b> “The AI already qualified them and wrote the reply. Your agent just reads and hits send.”</div></div></div>
+        <div class="tstep"><div class="tn">4</div><div><div class="do">Go to AI Agents, hit “Run now” on Follow-up.</div><div class="say"><b>Say:</b> “These five agents work your leads around the clock. Watch — it just followed up with everyone who was waiting on us.”</div></div></div>
+        <div class="tstep"><div class="tn">5</div><div><div class="do">Open the ✨ Copilot, type a real request.</div><div class="say"><b>Say:</b> “And you can just tell it what to do.” Try <b>“Give me a pipeline summary”</b> or <b>“Send a follow-up to all hot leads in Pune.”</b></div></div></div>
+        <div class="tstep"><div class="tn">6</div><div><div class="do">Land on the money line.</div><div class="say"><b>Say:</b> “Everything you saw runs on your real WhatsApp and portals once we set it up. If it saves you one booking, it’s paid for the year. Shall we get you started?”</div></div></div>
+      </div>
+      <p class="stack-note" style="margin-top:24px"><b>If anything looks stale mid-demo,</b> click <b>Reset demo</b> (top-right) to restore the clean 42-lead dataset — safe to press anytime.</p>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap col">
+      <div class="kicker"><span class="num">10</span><span class="eyebrow">Be ready for these</span></div>
+      <h2>Handling the questions they’ll ask</h2>
+      <div class="faq">
+        <div class="qa"><div class="q">“Is this just a chatbot?”</div><div class="a">No. A chatbot only talks. PropPulse <em>acts</em> — it scores leads, sends replies, moves deals, books visits, and gives the owner live numbers. It’s a full sales system with AI staff inside it.</div></div>
+        <div class="qa"><div class="q">“Will it really message on WhatsApp?”</div><div class="a">Yes, on an official WhatsApp Business number we connect during setup via a licensed provider. In the demo it’s shown as a chat thread so you can see exactly how it behaves.</div></div>
+        <div class="qa"><div class="q">“We already have a CRM.”</div><div class="a">Most CRMs are just a database people forget to update. Ask: “Does yours reply to a lead in 45 seconds and follow up on its own?” That’s the difference — this one does the work, it doesn’t just store it.</div></div>
+        <div class="qa"><div class="q">“What does it cost to run?”</div><div class="a">The monthly fee covers WhatsApp messaging, AI usage and support. It’s a small, predictable number against the brokerage on a single deal — and we size it to their volume.</div></div>
+        <div class="qa"><div class="q">“How long to set up?”</div><div class="a">The product is ready today. Setup is connecting their WhatsApp, portals, team and data — typically a short, guided onboarding, which is what the setup fee covers.</div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>PropPulse · AI Lead-to-Deal CRM — internal product &amp; sales playbook</div>
+    <div style="font-family:var(--font-mono);font-size:12px">Demo: <b style="color:var(--ink)">start-demo.bat</b> → localhost:3000</div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var btn = document.getElementById("themeBtn");
+    var root = document.documentElement;
+    function current() {
+      var set = root.getAttribute("data-theme");
+      if (set) return set;
+      return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    btn.addEventListener("click", function () {
+      var next = current() === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+    });
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e ' *)",
+      "Bash(npx kill-port *)",
+      "Bash(npm run *)",
+      "Bash(tee /tmp/pp_dev3.log)",
+      "Bash(node -e \"fetch\\('http://localhost:3000/api/reset',{method:'POST'}\\).then\\(r=>r.json\\(\\)\\).then\\(d=>console.log\\('demo reset:',d.ok?'OK — clean 42 leads':'fail'\\)\\).catch\\(e=>console.log\\('ERR',e.message\\)\\)\")"
+    ]
+  }
+}
