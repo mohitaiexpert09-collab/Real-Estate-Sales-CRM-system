@@ -7,6 +7,7 @@ const NAV = [
   { href: "/", label: "Dashboard", icon: "grid" },
   { href: "/leads", label: "Leads Inbox", icon: "inbox" },
   { href: "/pipeline", label: "Pipeline", icon: "columns" },
+  { href: "/broadcast", label: "Broadcast", icon: "send" },
   { href: "/agents", label: "AI Agents", icon: "spark" },
   { href: "/automations", label: "Automations", icon: "bolt" },
 ];
@@ -37,6 +38,12 @@ function Icon({ name }: { name: string }) {
       return (
         <svg className={common} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
           <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z" strokeLinejoin="round" />
+        </svg>
+      );
+    case "send":
+      return (
+        <svg className={common} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
+          <path d="M4 12l16-8-6 16-3-7-7-1z" strokeLinejoin="round" strokeLinecap="round" />
         </svg>
       );
     case "spark":

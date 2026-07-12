@@ -2,6 +2,7 @@ import { prisma } from "./db";
 import { draftReply } from "./ai";
 import { inr } from "./format";
 import { STAGES, OPEN_STAGES } from "./constants";
+import { sendBroadcast } from "./broadcast";
 
 // ---- Tool schemas exposed to Claude ----
 export const TOOL_DEFS = [
@@ -59,6 +60,22 @@ export const TOOL_DEFS = [
       type: "object",
       properties: { lead_id: { type: "string" } },
       required: ["lead_id"],
+    },
+  },
+  {
+    name: "send_broadcast",
+    description:
+      "Send the SAME WhatsApp message to a whole filtered audience at once (a bulk broadcast / campaign). Use for announcements like a new launch, a price offer or a festive greeting. The message may contain {name}, {project}, {city} placeholders that get personalised per lead. Filter the audience by tier, city, source and/or stage.",
+    input_schema: {
+      type: "object",
+      properties: {
+        message: { type: "string", description: "The broadcast text. Include {name} and {project} to personalise." },
+        tier: { type: "string", enum: ["Hot", "Warm", "Cold", "All"], description: "Audience tier (default All)" },
+        city: { type: "string", description: "City filter e.g. Pune, Mumbai, Bangalore (default all cities)" },
+        source: { type: "string", description: "Lead source filter (default all sources)" },
+        stage: { type: "string", enum: [...STAGES, "All"], description: "Pipeline stage filter (default all stages)" },
+      },
+      required: ["message"],
     },
   },
 ];
@@ -168,6 +185,16 @@ async function scheduleVisit(input: any): Promise<ToolResult> {
   return { result: { ok: true, lead: lead.name }, action: `Booked site visit for ${lead.name}` };
 }
 
+async function sendBroadcastTool(input: any): Promise<ToolResult> {
+  const filters = { tier: input.tier, city: input.city, source: input.source, stage: input.stage };
+  const { sent, recipients, error } = await sendBroadcast(filters, String(input.message ?? ""));
+  if (error) return { result: { error } };
+  return {
+    result: { ok: true, sent, recipients: recipients.slice(0, 10) },
+    action: sent > 0 ? `Broadcast sent to ${sent} lead${sent > 1 ? "s" : ""}` : "Broadcast matched 0 leads",
+  };
+}
+
 export async function executeTool(name: string, input: any): Promise<ToolResult> {
   switch (name) {
     case "list_leads":
@@ -180,6 +207,8 @@ export async function executeTool(name: string, input: any): Promise<ToolResult>
       return moveStage(input);
     case "schedule_site_visit":
       return scheduleVisit(input);
+    case "send_broadcast":
+      return sendBroadcastTool(input);
     default:
       return { result: { error: `unknown tool ${name}` } };
   }
