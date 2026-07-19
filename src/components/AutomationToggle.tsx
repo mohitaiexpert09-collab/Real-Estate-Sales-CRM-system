@@ -20,7 +20,7 @@ export default function AutomationToggle({ id, enabled }: { id: string; enabled:
     <button
       onClick={toggle}
       disabled={busy}
-      className={`relative h-6 w-11 flex-none rounded-full transition ${on ? "bg-emerald-500" : "bg-slate-300"} ${busy ? "opacity-60" : ""}`}
+      className={`relative h-6 w-11 flex-none rounded-full transition ${on ? "bg-accent" : "bg-line"} ${busy ? "opacity-60" : ""}`}
       aria-pressed={on}
     >
       <span className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow transition-all ${on ? "left-[22px]" : "left-0.5"}`} />

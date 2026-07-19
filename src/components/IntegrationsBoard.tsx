@@ -24,8 +24,8 @@ const INTEGRATIONS: Integration[] = [
 
 function StatusPill({ connected }: { connected: boolean }) {
   return connected ? (
-    <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-2.5 py-1 text-[11px] font-semibold text-emerald-700 ring-1 ring-emerald-600/20">
-      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" /> Connected
+    <span className="inline-flex items-center gap-1.5 rounded-full bg-elevated px-2.5 py-1 text-[11px] font-semibold text-content ring-1 ring-line">
+      <span className="h-1.5 w-1.5 rounded-full bg-accent" /> Connected
     </span>
   ) : (
     <span className="inline-flex items-center gap-1.5 rounded-full bg-elevated px-2.5 py-1 text-[11px] font-semibold text-muted ring-1 ring-line">
@@ -60,10 +60,10 @@ export default function IntegrationsBoard() {
     <div className="space-y-6">
       {/* Zoho — the headline integration */}
       <section className="animate-rise overflow-hidden rounded-3xl border border-line bg-surface shadow-card">
-        <div className="pointer-events-none h-[3px] bg-brand-sheen" />
+        <div className="pointer-events-none h-[3px] bg-accent" />
         <div className="flex flex-col gap-6 p-7 md:flex-row md:items-center md:justify-between">
           <div className="flex items-start gap-4">
-            <div className="grid h-14 w-14 flex-none place-items-center rounded-2xl bg-red-50 text-lg font-bold text-red-600 ring-1 ring-red-600/20">
+            <div className="grid h-14 w-14 flex-none place-items-center rounded-2xl bg-elevated text-lg font-bold text-content ring-1 ring-line">
               Zoho
             </div>
             <div>
@@ -90,7 +90,7 @@ export default function IntegrationsBoard() {
             className={`flex-none rounded-xl px-5 py-2.5 text-sm font-semibold shadow-sm transition disabled:opacity-70 ${
               zoho
                 ? "border border-line bg-surface text-muted hover:text-content"
-                : "bg-brand-sheen text-white shadow-lift hover:brightness-110"
+                : "bg-accent text-accent-fg shadow-lift hover:opacity-90"
             }`}
           >
             {zohoBusy ? "Connecting…" : zoho ? "Disconnect" : "Connect Zoho"}
@@ -110,7 +110,7 @@ export default function IntegrationsBoard() {
             return (
               <div key={it.key} className="flex flex-col rounded-2xl border border-line bg-surface p-5 shadow-card transition hover:shadow-lift">
                 <div className="flex items-start justify-between">
-                  <div className={`grid h-11 w-11 place-items-center rounded-xl text-sm font-bold ring-1 ${it.tint}`}>
+                  <div className="grid h-11 w-11 place-items-center rounded-xl bg-elevated text-sm font-bold text-muted ring-1 ring-line">
                     {it.monogram}
                   </div>
                   <StatusPill connected={isOn} />
@@ -122,7 +122,7 @@ export default function IntegrationsBoard() {
                   className={`mt-4 rounded-lg border px-3 py-2 text-xs font-semibold transition ${
                     isOn
                       ? "border-line bg-surface text-muted hover:text-content"
-                      : "border-brand-200 bg-brand-50 text-brand-700 hover:bg-brand-100"
+                      : "border-line bg-elevated text-content hover:bg-line"
                   }`}
                 >
                   {isOn ? "Manage" : "Connect"}

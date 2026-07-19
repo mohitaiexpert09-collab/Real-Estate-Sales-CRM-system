@@ -138,7 +138,7 @@ export default function BroadcastComposer() {
             <button
               onClick={draftWithAI}
               disabled={drafting}
-              className="flex flex-none items-center gap-1.5 rounded-lg bg-gradient-to-br from-brand-600 to-emerald-500 px-3 py-1.5 text-xs font-semibold text-white shadow-sm transition hover:brightness-110 disabled:opacity-60"
+              className="flex flex-none items-center gap-1.5 rounded-lg bg-accent px-3 py-1.5 text-xs font-semibold text-accent-fg shadow-sm transition hover:opacity-90 disabled:opacity-60"
             >
               {drafting ? "Drafting…" : "✨ Draft with AI"}
             </button>
@@ -153,7 +153,7 @@ export default function BroadcastComposer() {
                   setCampaign(p.key);
                 }}
                 className={`rounded-full border px-2.5 py-1 text-xs font-medium transition ${
-                  campaign === p.key ? "border-brand-300 bg-brand-50 text-brand-700" : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50"
+                  campaign === p.key ? "border-transparent bg-accent text-accent-fg" : "border-slate-200 bg-white text-slate-600 hover:bg-slate-50"
                 }`}
               >
                 {p.label}
@@ -175,7 +175,7 @@ export default function BroadcastComposer() {
         <button
           onClick={send}
           disabled={sending || !message.trim() || !count}
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white shadow-lift transition hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50"
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-accent px-4 py-3 text-sm font-semibold text-accent-fg shadow-lift transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
         >
           {sending ? (
             <>
@@ -190,9 +190,9 @@ export default function BroadcastComposer() {
         </button>
 
         {sent && (
-          <div className="animate-slideup rounded-xl border border-emerald-200 bg-emerald-50 p-4">
-            <div className="flex items-center gap-2 text-sm font-semibold text-emerald-800">
-              <span className="grid h-6 w-6 place-items-center rounded-full bg-emerald-500 text-xs text-white">✓</span>
+          <div className="animate-slideup rounded-xl border border-line bg-elevated p-4">
+            <div className="flex items-center gap-2 text-sm font-semibold text-content">
+              <span className="grid h-6 w-6 place-items-center rounded-full bg-accent text-xs text-accent-fg">✓</span>
               Broadcast sent to {sent.n} lead{sent.n === 1 ? "" : "s"} on WhatsApp
             </div>
             {sent.names.length > 0 && (
@@ -237,10 +237,10 @@ export default function BroadcastComposer() {
           <p className="mt-0.5 text-xs text-slate-500">
             As {previewLead ? previewLead.name.split(" ")[0] : "a lead"} will see it on WhatsApp
           </p>
-          <div className="mt-3 rounded-xl bg-[#e5ddd5] p-3 dark:bg-[#0b141a]" style={{ backgroundImage: "radial-gradient(rgba(0,0,0,.04) 1px, transparent 1px)", backgroundSize: "14px 14px" }}>
-            <div className="ml-auto max-w-[85%] rounded-lg rounded-tr-sm bg-[#dcf8c6] px-3 py-2 shadow-sm dark:bg-[#005c4b]">
-              <div className="whitespace-pre-wrap text-[13px] leading-relaxed text-[#111b21] dark:text-[#e9edef]">{rendered || "Your message preview…"}</div>
-              <div className="mt-1 text-right text-[10px] text-[#667781] dark:text-[#8696a0]">now ✓✓</div>
+          <div className="mt-3 rounded-xl bg-elevated p-3" style={{ backgroundImage: "radial-gradient(rgba(127,127,127,.10) 1px, transparent 1px)", backgroundSize: "14px 14px" }}>
+            <div className="ml-auto max-w-[85%] rounded-lg rounded-tr-sm bg-accent px-3 py-2 shadow-sm">
+              <div className="whitespace-pre-wrap text-[13px] leading-relaxed text-accent-fg">{rendered || "Your message preview…"}</div>
+              <div className="mt-1 text-right text-[10px] text-accent-fg/60">now ✓✓</div>
             </div>
           </div>
         </section>

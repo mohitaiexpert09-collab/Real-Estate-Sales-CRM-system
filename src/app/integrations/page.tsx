@@ -34,7 +34,7 @@ export default function IntegrationsPage() {
                 <tr className="text-left">
                   <th className="px-7 py-3 text-[11px] font-semibold uppercase tracking-[0.1em] text-faint">What matters</th>
                   <th className="px-5 py-3">
-                    <span className="inline-flex items-center gap-2 rounded-full bg-brand-sheen px-3 py-1 text-[12px] font-semibold text-white shadow-lift">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-accent px-3 py-1 text-[12px] font-semibold text-accent-fg shadow-lift">
                       PropPulse
                     </span>
                   </th>
@@ -47,7 +47,7 @@ export default function IntegrationsPage() {
                     <td className="px-7 py-3.5 font-medium text-content">{row.dimension}</td>
                     <td className="px-5 py-3.5">
                       <span className="flex items-center gap-2 text-content">
-                        <span className="grid h-4 w-4 flex-none place-items-center rounded-full bg-emerald-100 text-[10px] font-bold text-emerald-700">
+                        <span className="grid h-4 w-4 flex-none place-items-center rounded-full bg-accent text-[10px] font-bold text-accent-fg">
                           ✓
                         </span>
                         {row.pp}

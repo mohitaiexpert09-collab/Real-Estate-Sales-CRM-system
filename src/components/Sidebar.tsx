@@ -86,7 +86,7 @@ export default function Sidebar() {
     <aside className="fixed inset-y-0 left-0 z-20 flex w-64 flex-col border-r border-line bg-surface">
       {/* Brand */}
       <div className="flex items-center gap-3 px-5 pb-5 pt-6">
-        <div className="grid h-9 w-9 place-items-center rounded-xl bg-brand-sheen text-white shadow-lift">
+        <div className="grid h-9 w-9 place-items-center rounded-xl bg-accent text-accent-fg shadow-lift">
           <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M3 11l9-7 9 7" strokeLinecap="round" strokeLinejoin="round" /><path d="M5 10v9h14v-9" strokeLinecap="round" strokeLinejoin="round" /><path d="M9 19v-5h6v5" />
           </svg>
@@ -117,9 +117,9 @@ export default function Sidebar() {
                     }`}
                   >
                     {active && (
-                      <span className="absolute left-0 top-1/2 h-5 w-[3px] -translate-y-1/2 rounded-full bg-brand-sheen" />
+                      <span className="absolute left-0 top-1/2 h-5 w-[3px] -translate-y-1/2 rounded-full bg-accent" />
                     )}
-                    <span className={active ? "text-brand-500" : "text-faint group-hover:text-muted"}>
+                    <span className={active ? "text-content" : "text-faint group-hover:text-muted"}>
                       <Icon name={item.icon} />
                     </span>
                     {item.label}
@@ -133,8 +133,8 @@ export default function Sidebar() {
 
       {/* Outcome card — this is what the CRM is for */}
       <div className="mx-3 mb-3 rounded-xl border border-line bg-elevated p-3.5">
-        <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.13em] text-emerald-600">
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" /> Live outcome
+        <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.13em] text-muted">
+          <span className="h-1.5 w-1.5 rounded-full bg-accent" /> Live outcome
         </div>
         <p className="mt-1.5 text-xs leading-relaxed text-muted">
           Every lead answered in <span className="font-semibold text-content">under 60s</span>. Zero follow-ups dropped.

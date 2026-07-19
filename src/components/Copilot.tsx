@@ -53,7 +53,7 @@ export default function Copilot() {
       {!open && (
         <button
           onClick={() => setOpen(true)}
-          className="fixed bottom-6 right-6 z-40 flex items-center gap-2 rounded-full bg-gradient-to-br from-brand-600 to-emerald-500 px-4 py-3 text-sm font-semibold text-white shadow-lift transition hover:brightness-110"
+          className="fixed bottom-6 right-6 z-40 flex items-center gap-2 rounded-full bg-accent px-4 py-3 text-sm font-semibold text-accent-fg shadow-lift transition hover:opacity-90"
         >
           <span className="text-base">✨</span> Ask Copilot
         </button>
@@ -67,7 +67,7 @@ export default function Copilot() {
             {/* header */}
             <div className="flex items-center justify-between border-b border-slate-100 bg-ink-900 px-4 py-3.5 text-white">
               <div className="flex items-center gap-2.5">
-                <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-brand-500 to-emerald-500 text-base">✨</span>
+                <span className="grid h-8 w-8 place-items-center rounded-lg bg-accent text-accent-fg text-base">✨</span>
                 <div>
                   <div className="text-sm font-semibold leading-none">PropPulse Copilot</div>
                   <div className="mt-1 text-[11px] text-slate-400">Your AI sales agent · operates the CRM</div>
@@ -104,7 +104,7 @@ export default function Copilot() {
                 <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
                   <div
                     className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm shadow-sm ${
-                      m.role === "user" ? "rounded-br-sm bg-brand-600 text-white" : "rounded-bl-sm bg-white text-slate-800"
+                      m.role === "user" ? "rounded-br-sm bg-accent text-accent-fg" : "rounded-bl-sm bg-white text-slate-800"
                     }`}
                   >
                     <div className="whitespace-pre-wrap leading-relaxed">{m.content}</div>
@@ -161,7 +161,7 @@ export default function Copilot() {
                 <button
                   type="submit"
                   disabled={busy || !input.trim()}
-                  className="grid h-9 w-9 flex-none place-items-center rounded-lg bg-brand-600 text-white transition hover:bg-brand-700 disabled:opacity-40"
+                  className="grid h-9 w-9 flex-none place-items-center rounded-lg bg-accent text-accent-fg transition hover:opacity-90 disabled:opacity-40"
                 >
                   <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 12l16-8-6 16-3-7-7-1z" strokeLinejoin="round" /></svg>
                 </button>

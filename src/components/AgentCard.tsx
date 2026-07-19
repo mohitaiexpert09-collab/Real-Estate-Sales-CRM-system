@@ -47,14 +47,14 @@ export default function AgentCard(props: Props) {
   return (
     <div className="flex flex-col rounded-2xl border border-slate-200 bg-white p-5 shadow-card transition hover:shadow-lift">
       <div className="flex items-start gap-3.5">
-        <span className="grid h-12 w-12 flex-none place-items-center rounded-xl bg-gradient-to-br from-brand-50 to-emerald-50 text-2xl ring-1 ring-slate-200/60">
+        <span className="grid h-12 w-12 flex-none place-items-center rounded-xl bg-elevated text-2xl ring-1 ring-line">
           {props.emoji}
         </span>
         <div className="min-w-0 flex-1">
           <div className="flex items-center gap-2">
             <h3 className="truncate text-sm font-semibold text-slate-900">{props.name}</h3>
-            <span className="flex items-center gap-1 text-[10px] font-medium text-emerald-600">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" /> active
+            <span className="flex items-center gap-1 text-[10px] font-medium text-muted">
+              <span className="h-1.5 w-1.5 rounded-full bg-accent" /> active
             </span>
           </div>
           <p className="mt-0.5 text-xs font-medium text-brand-600">{props.tagline}</p>
@@ -86,7 +86,7 @@ export default function AgentCard(props: Props) {
           <button
             onClick={run}
             disabled={busy}
-            className="flex items-center gap-2 rounded-lg bg-ink-900 px-3.5 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-ink-800 disabled:opacity-60"
+            className="flex items-center gap-2 rounded-lg bg-accent px-3.5 py-2 text-sm font-semibold text-accent-fg shadow-sm transition hover:opacity-90 disabled:opacity-60"
           >
             {busy ? (
               <>
@@ -106,7 +106,7 @@ export default function AgentCard(props: Props) {
       {result && (
         <div className="mt-3 animate-slideup rounded-xl border border-emerald-200 bg-emerald-50/60 p-3 dark:border-emerald-500/25 dark:bg-emerald-500/10">
           <div className="flex items-center gap-2 text-sm font-semibold text-emerald-800 dark:text-emerald-200">
-            <span className="grid h-5 w-5 place-items-center rounded-full bg-emerald-500 text-[11px] text-white">✓</span>
+            <span className="grid h-5 w-5 place-items-center rounded-full bg-accent text-[11px] text-accent-fg">✓</span>
             {result.summary}
           </div>
           {result.actions.length > 0 && (

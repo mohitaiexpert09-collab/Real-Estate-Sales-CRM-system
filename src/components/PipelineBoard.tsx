@@ -75,7 +75,7 @@ export default function PipelineBoard({ leads }: { leads: Lead[] }) {
                       </Link>
                       <span
                         className={`flex-none rounded-md px-1.5 py-0.5 text-[10px] font-semibold ${
-                          l.tier === "Hot" ? "bg-rose-100 text-rose-700" : l.tier === "Warm" ? "bg-amber-100 text-amber-800" : "bg-slate-100 text-slate-600"
+                          l.tier === "Hot" ? "bg-accent text-accent-fg" : l.tier === "Warm" ? "bg-transparent text-content ring-1 ring-inset ring-line" : "bg-elevated text-faint"
                         }`}
                       >
                         {l.score}

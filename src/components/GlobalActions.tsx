@@ -56,11 +56,11 @@ export default function GlobalActions({ aiEnabled, label }: { aiEnabled: boolean
     <div className="flex items-center gap-2.5">
       <span
         className={`hidden items-center gap-1.5 rounded-full px-2.5 py-1 text-[11px] font-medium ring-1 md:inline-flex ${
-          aiEnabled ? "bg-emerald-50 text-emerald-700 ring-emerald-600/20" : "bg-slate-100 text-slate-600 ring-slate-400/20"
+          aiEnabled ? "bg-elevated text-content ring-line" : "bg-elevated text-muted ring-line"
         }`}
         title={aiEnabled ? "AI provider is live" : "Running on built-in AI mock (no API key set)"}
       >
-        <span className={`h-1.5 w-1.5 rounded-full ${aiEnabled ? "bg-emerald-500" : "bg-slate-400"}`} />
+        <span className={`h-1.5 w-1.5 rounded-full ${aiEnabled ? "bg-accent" : "bg-faint"}`} />
         {label}
       </span>
 
@@ -74,7 +74,7 @@ export default function GlobalActions({ aiEnabled, label }: { aiEnabled: boolean
 
       <button
         onClick={runSimulate}
-        className="flex items-center gap-2 rounded-lg bg-gradient-to-br from-brand-600 to-brand-500 px-3.5 py-2 text-sm font-semibold text-white shadow-lift transition hover:brightness-110"
+        className="flex items-center gap-2 rounded-lg bg-accent px-3.5 py-2 text-sm font-semibold text-accent-fg shadow-lift transition hover:opacity-90"
       >
         <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
           <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z" strokeLinejoin="round" />
@@ -86,7 +86,7 @@ export default function GlobalActions({ aiEnabled, label }: { aiEnabled: boolean
         <div className="fixed inset-0 z-50 grid place-items-center bg-slate-900/40 backdrop-blur-sm">
           <div className="w-[440px] max-w-[92vw] animate-pop rounded-2xl bg-white p-6 shadow-2xl">
             <div className="flex items-center gap-2 text-sm font-semibold text-slate-800">
-              <span className="grid h-6 w-6 place-items-center rounded-md bg-brand-600 text-white">⚡</span>
+              <span className="grid h-6 w-6 place-items-center rounded-md bg-accent text-accent-fg">⚡</span>
               Live automation firing
             </div>
 
@@ -98,7 +98,7 @@ export default function GlobalActions({ aiEnabled, label }: { aiEnabled: boolean
                   <div key={i} className="flex items-center gap-3">
                     <span
                       className={`grid h-6 w-6 flex-none place-items-center rounded-full text-xs transition ${
-                        done ? "bg-emerald-500 text-white" : active ? "bg-brand-500 text-white" : "bg-slate-200 text-slate-400"
+                        done ? "bg-accent text-accent-fg" : active ? "bg-accent/70 text-accent-fg" : "bg-elevated text-faint"
                       }`}
                     >
                       {done ? "✓" : i + 1}
@@ -118,7 +118,7 @@ export default function GlobalActions({ aiEnabled, label }: { aiEnabled: boolean
                   <div className="text-sm font-semibold text-slate-800">{result.lead.name}</div>
                   <span
                     className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${
-                      result.lead.tier === "Hot" ? "bg-rose-100 text-rose-700" : result.lead.tier === "Warm" ? "bg-amber-100 text-amber-800" : "bg-slate-200 text-slate-600"
+                      result.lead.tier === "Hot" ? "bg-accent text-accent-fg" : result.lead.tier === "Warm" ? "bg-transparent text-content ring-1 ring-inset ring-line" : "bg-elevated text-faint"
                     }`}
                   >
                     {result.lead.tier} · {result.lead.score}
@@ -127,7 +127,7 @@ export default function GlobalActions({ aiEnabled, label }: { aiEnabled: boolean
                 <div className="mt-0.5 text-xs text-slate-500">
                   {result.lead.project} · {result.lead.city} · from {result.lead.source}
                 </div>
-                <div className="mt-2 rounded-lg bg-emerald-500/10 p-2.5 text-xs leading-relaxed text-emerald-900">
+                <div className="mt-2 rounded-lg bg-elevated p-2.5 text-xs leading-relaxed text-content">
                   <span className="font-semibold">Auto-reply:</span> {result.reply}
                 </div>
                 <div className="mt-3 flex gap-2">
@@ -136,7 +136,7 @@ export default function GlobalActions({ aiEnabled, label }: { aiEnabled: boolean
                       setOpen(false);
                       router.push(`/leads/${result.lead.id}`);
                     }}
-                    className="flex-1 rounded-lg bg-brand-600 px-3 py-2 text-sm font-semibold text-white hover:bg-brand-700"
+                    className="flex-1 rounded-lg bg-accent px-3 py-2 text-sm font-semibold text-accent-fg hover:opacity-90"
                   >
                     Open lead
                   </button>

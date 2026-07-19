@@ -41,7 +41,7 @@ export default async function LeadsPage({ searchParams }: { searchParams: { tier
                 key={f.key}
                 href={f.key === "all" ? "/leads" : `/leads?tier=${f.key}`}
                 className={`rounded-full px-3.5 py-1.5 text-sm font-medium transition ${
-                  active ? "bg-brand-600 text-white shadow-lift" : "border border-slate-200 bg-white text-slate-600 hover:bg-slate-50"
+                  active ? "bg-accent text-accent-fg shadow-lift" : "border border-line bg-surface text-muted hover:bg-elevated"
                 }`}
               >
                 {f.label} <span className="opacity-70">· {counts[f.key]}</span>

@@ -9,27 +9,39 @@
 :root {
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
 
-  --canvas: 249 250 252; /* #F9FAFC */
+  --canvas: 250 250 250; /* #FAFAFA */
   --surface: 255 255 255; /* #FFFFFF */
-  --elevated: 244 245 249; /* #F4F5F9 */
-  --line: 229 231 240; /* #E5E7F0 */
-  --line-soft: 239 241 246; /* #EFF1F6 */
-  --text: 13 17 23; /* #0D1117 */
-  --muted: 100 116 139; /* slate-500 */
-  --faint: 148 163 184; /* slate-400 */
+  --elevated: 244 244 245; /* zinc-100 */
+  --line: 228 228 231; /* zinc-200 */
+  --line-soft: 240 240 241; /* near zinc-100 */
+  --text: 9 9 11; /* zinc-950 */
+  --muted: 113 113 122; /* zinc-500 */
+  --faint: 161 161 170; /* zinc-400 */
+  --accent: 24 24 27; /* zinc-900 — near black */
+  --accent-fg: 250 250 250; /* near white */
 
-  --shadow-card: 0 1px 2px rgba(16, 24, 40, 0.04), 0 1px 3px rgba(16, 24, 40, 0.06);
+  --chart-bar: #27272a;
+  --chart-grid: #e4e4e7;
+  --chart-axis: #71717a;
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.04), 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 html.dark {
-  --canvas: 8 9 13; /* #08090D */
-  --surface: 18 20 27; /* #12141B */
-  --elevated: 25 28 37; /* #191C25 */
-  --line: 38 42 54; /* #262A36 */
-  --line-soft: 30 33 43; /* #1E212B */
-  --text: 237 239 243; /* #EDEFF3 */
-  --muted: 150 158 171; /* #969EAB */
-  --faint: 108 116 130; /* #6C7482 */
+  --canvas: 10 10 11; /* #0A0A0B */
+  --surface: 24 24 27; /* zinc-900 */
+  --elevated: 31 31 35; /* #1F1F23 */
+  --line: 39 39 42; /* zinc-800 */
+  --line-soft: 32 32 36;
+  --text: 244 244 245; /* zinc-100 */
+  --muted: 161 161 170; /* zinc-400 */
+  --faint: 113 113 122; /* zinc-500 */
+  --accent: 244 244 245; /* near white */
+  --accent-fg: 10 10 11; /* near black */
+
+  --chart-bar: #d4d4d8;
+  --chart-grid: #27272a;
+  --chart-axis: #a1a1aa;
 
   --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.5);
   color-scheme: dark;
@@ -52,7 +64,7 @@ body {
 }
 
 ::selection {
-  background: rgba(109, 106, 245, 0.22);
+  background: rgb(var(--accent) / 0.18);
 }
 
 /* Thin scrollbars for kanban / threads */
@@ -167,6 +179,48 @@ html.dark .text-slate-600 {
 html.dark .text-slate-500,
 html.dark .text-slate-400 {
   color: rgb(var(--faint));
+}
+
+/* Now-neutral tint chips: keep them subtle in dark instead of bright-white */
+html.dark .bg-emerald-50,
+html.dark .bg-brand-50,
+html.dark .bg-rose-50,
+html.dark .bg-amber-50,
+html.dark .bg-sky-50,
+html.dark .bg-blue-50,
+html.dark .bg-violet-50,
+html.dark .bg-red-50,
+html.dark .bg-orange-50,
+html.dark .bg-indigo-50,
+html.dark .bg-emerald-100,
+html.dark .bg-brand-100,
+html.dark .bg-rose-100,
+html.dark .bg-amber-100,
+html.dark .bg-sky-100,
+html.dark .bg-blue-100,
+html.dark .bg-violet-100,
+html.dark .bg-red-100,
+html.dark .bg-orange-100,
+html.dark .bg-indigo-100 {
+  background-color: rgb(var(--elevated));
+}
+html.dark .text-emerald-700,
+html.dark .text-emerald-800,
+html.dark .text-emerald-900,
+html.dark .text-emerald-600,
+html.dark .text-brand-700,
+html.dark .text-brand-600,
+html.dark .text-rose-700,
+html.dark .text-amber-700,
+html.dark .text-amber-800,
+html.dark .text-sky-700,
+html.dark .text-blue-700,
+html.dark .text-violet-700,
+html.dark .text-red-700,
+html.dark .text-red-600,
+html.dark .text-orange-700,
+html.dark .text-indigo-700 {
+  color: rgb(var(--muted));
 }
 
 html.dark .shadow-card,

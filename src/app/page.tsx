@@ -46,9 +46,9 @@ export default async function DashboardPage() {
           <div className="grid gap-px bg-line md:grid-cols-[1.4fr_1fr_1fr]">
             {/* headline result */}
             <div className="relative bg-surface p-7">
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-brand-sheen" />
-              <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.13em] text-brand-600">
-                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" /> Revenue attributed
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-[3px] bg-accent" />
+              <div className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.13em] text-muted">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" /> Revenue attributed
               </div>
               <div className="mt-3 text-[42px] font-semibold leading-none tracking-tightest text-content">
                 {inr(s.revenue)}
@@ -65,7 +65,7 @@ export default async function DashboardPage() {
               <div className="mt-2 text-3xl font-semibold tracking-tightest text-content">
                 {humanDuration(s.avgFirstResponse)}
               </div>
-              <div className="mt-1.5 inline-flex w-fit items-center gap-1 rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-medium text-emerald-700 ring-1 ring-emerald-600/20">
+              <div className="mt-1.5 inline-flex w-fit items-center gap-1 rounded-full bg-elevated px-2 py-0.5 text-[11px] font-medium text-muted ring-1 ring-inset ring-line">
                 ↓ from 4 hours by hand
               </div>
             </div>
@@ -110,7 +110,7 @@ export default async function DashboardPage() {
                   </div>
                   <div className="h-2 w-full overflow-hidden rounded-full bg-elevated">
                     <div
-                      className="h-full rounded-full bg-brand-sheen"
+                      className="h-full rounded-full bg-accent"
                       style={{ width: `${(f.count / maxFunnel) * 100}%` }}
                     />
                   </div>
@@ -125,7 +125,7 @@ export default async function DashboardPage() {
           <div className="rounded-2xl border border-line bg-surface p-5 shadow-card lg:col-span-2">
             <div className="mb-3 flex items-center justify-between">
               <h2 className="text-sm font-semibold text-content">Avg first-response time</h2>
-              <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-medium text-emerald-700 ring-1 ring-emerald-600/20">
+              <span className="rounded-full bg-elevated px-2 py-0.5 text-[11px] font-medium text-muted ring-1 ring-inset ring-line">
                 SLA &lt; 60s
               </span>
             </div>
@@ -135,7 +135,7 @@ export default async function DashboardPage() {
           <div className="rounded-2xl border border-line bg-surface p-5 shadow-card">
             <div className="mb-3 flex items-center justify-between">
               <h2 className="text-sm font-semibold text-content">Hot leads · act now</h2>
-              <Link href="/leads" className="text-xs font-medium text-brand-600 hover:underline">
+              <Link href="/leads" className="text-xs font-medium text-content hover:underline">
                 View all
               </Link>
             </div>
@@ -147,7 +147,7 @@ export default async function DashboardPage() {
                   href={`/leads/${l.id}`}
                   className="flex items-center gap-3 rounded-lg px-2 py-2 transition hover:bg-elevated"
                 >
-                  <span className="grid h-8 w-8 flex-none place-items-center rounded-full bg-rose-100 text-xs font-semibold text-rose-700">
+                  <span className="grid h-8 w-8 flex-none place-items-center rounded-full bg-accent text-xs font-semibold text-accent-fg">
                     {l.score}
                   </span>
                   <div className="min-w-0 flex-1">
