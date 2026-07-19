@@ -8,12 +8,18 @@ export const metadata: Metadata = {
   description: "AI-powered real-estate CRM for Indian developers & brokers.",
 };
 
+// Set the theme before first paint so there's no light/dark flash.
+const themeScript = `(function(){try{var t=localStorage.getItem('pp-theme');if(!t){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}if(t==='dark'){document.documentElement.classList.add('dark');}}catch(e){}})();`;
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>
         <Sidebar />
-        <main className="ml-60 min-h-screen">{children}</main>
+        <main className="ml-64 min-h-screen bg-canvas">{children}</main>
         <Copilot />
       </body>
     </html>

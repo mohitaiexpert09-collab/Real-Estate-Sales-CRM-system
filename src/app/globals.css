@@ -2,8 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---------------------------------------------------------------------------
+   Theme tokens — a single indigo→violet accent, emerald reserved for "money".
+   Light is the quiet-luxury default; dark is a true near-black premium mode.
+--------------------------------------------------------------------------- */
 :root {
-  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+
+  --canvas: 249 250 252; /* #F9FAFC */
+  --surface: 255 255 255; /* #FFFFFF */
+  --elevated: 244 245 249; /* #F4F5F9 */
+  --line: 229 231 240; /* #E5E7F0 */
+  --line-soft: 239 241 246; /* #EFF1F6 */
+  --text: 13 17 23; /* #0D1117 */
+  --muted: 100 116 139; /* slate-500 */
+  --faint: 148 163 184; /* slate-400 */
+
+  --shadow-card: 0 1px 2px rgba(16, 24, 40, 0.04), 0 1px 3px rgba(16, 24, 40, 0.06);
+}
+
+html.dark {
+  --canvas: 8 9 13; /* #08090D */
+  --surface: 18 20 27; /* #12141B */
+  --elevated: 25 28 37; /* #191C25 */
+  --line: 38 42 54; /* #262A36 */
+  --line-soft: 30 33 43; /* #1E212B */
+  --text: 237 239 243; /* #EDEFF3 */
+  --muted: 150 158 171; /* #969EAB */
+  --faint: 108 116 130; /* #6C7482 */
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 1px 3px rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
 }
 
 html,
@@ -13,10 +42,17 @@ body {
 }
 
 body {
-  background: #f6f7fb;
-  color: #0f172a;
+  background: rgb(var(--canvas));
+  color: rgb(var(--text));
   font-family: var(--font-sans);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition: background-color 0.35s ease, color 0.2s ease;
+}
+
+::selection {
+  background: rgba(109, 106, 245, 0.22);
 }
 
 /* Thin scrollbars for kanban / threads */
@@ -32,6 +68,9 @@ body {
   background: transparent;
 }
 
+/* ---------------------------------------------------------------------------
+   Motion
+--------------------------------------------------------------------------- */
 @keyframes pop {
   0% {
     transform: scale(0.96);
@@ -58,4 +97,84 @@ body {
 }
 .animate-slideup {
   animation: slideup 0.3s ease-out both;
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.animate-rise {
+  animation: rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Dark-mode remap for neutral utility classes used across pages.
+   Colored chips (indigo/emerald/rose/amber/sky pastels) are intentionally left
+   untouched — bright pastels read as premium accents on the near-black canvas.
+   This keeps every existing page themed without rewriting each utility.
+--------------------------------------------------------------------------- */
+html.dark .bg-white {
+  background-color: rgb(var(--surface));
+}
+html.dark .bg-slate-50,
+html.dark .bg-slate-50\/60,
+html.dark .bg-slate-100\/60,
+html.dark .bg-\[\#f6f7fb\] {
+  background-color: rgb(var(--elevated));
+}
+html.dark .bg-white\/60 {
+  background-color: rgb(var(--surface) / 0.6);
+}
+html.dark .bg-slate-100 {
+  background-color: rgb(var(--elevated));
+}
+html.dark .bg-slate-200 {
+  background-color: rgb(var(--line));
+}
+
+html.dark .border-slate-200,
+html.dark .border-slate-300 {
+  border-color: rgb(var(--line));
+}
+html.dark .border-slate-100 {
+  border-color: rgb(var(--line-soft));
+}
+
+html.dark .text-slate-900,
+html.dark .text-slate-800 {
+  color: rgb(var(--text));
+}
+html.dark .text-slate-700,
+html.dark .text-slate-600 {
+  color: rgb(var(--muted));
+}
+html.dark .text-slate-500,
+html.dark .text-slate-400 {
+  color: rgb(var(--faint));
+}
+
+html.dark .shadow-card,
+html.dark .shadow-sm {
+  box-shadow: var(--shadow-card);
+}
+
+/* Recharts gridlines adapt to theme */
+html.dark .recharts-cartesian-grid line {
+  stroke: rgb(var(--line)) !important;
 }

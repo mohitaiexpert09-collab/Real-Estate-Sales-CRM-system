@@ -104,15 +104,15 @@ export default function AgentCard(props: Props) {
       </div>
 
       {result && (
-        <div className="mt-3 animate-slideup rounded-xl border border-emerald-200 bg-emerald-50/60 p-3">
-          <div className="flex items-center gap-2 text-sm font-semibold text-emerald-800">
+        <div className="mt-3 animate-slideup rounded-xl border border-emerald-200 bg-emerald-50/60 p-3 dark:border-emerald-500/25 dark:bg-emerald-500/10">
+          <div className="flex items-center gap-2 text-sm font-semibold text-emerald-800 dark:text-emerald-200">
             <span className="grid h-5 w-5 place-items-center rounded-full bg-emerald-500 text-[11px] text-white">✓</span>
             {result.summary}
           </div>
           {result.actions.length > 0 && (
             <ul className="mt-2 space-y-1 border-t border-emerald-200/70 pt-2">
               {result.actions.map((a, i) => (
-                <li key={i} className="flex items-center gap-1.5 text-[11px] text-emerald-700">
+                <li key={i} className="flex items-center gap-1.5 text-[11px] text-emerald-700 dark:text-emerald-300">
                   <span className="text-emerald-400">•</span> {a}
                 </li>
               ))}

@@ -57,16 +57,16 @@ export default async function LeadDetailPage({ params }: { params: { id: string 
                 <Field label="Intent" value={lead.intent || "—"} full />
               </div>
 
-              <div className="mt-4 rounded-xl bg-brand-50/70 p-3.5">
-                <div className="mb-1 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-brand-700">
+              <div className="mt-4 rounded-xl border border-brand-500/15 bg-brand-500/[0.06] p-3.5">
+                <div className="mb-1 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-400">
                   🧠 AI qualification
                 </div>
-                <p className="text-sm leading-relaxed text-slate-700">{lead.aiSummary}</p>
+                <p className="text-sm leading-relaxed text-content/85">{lead.aiSummary}</p>
                 <div className="mt-2 flex items-center gap-2">
-                  <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-white">
+                  <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-elevated">
                     <div className="h-full rounded-full bg-gradient-to-r from-amber-400 via-orange-500 to-rose-500" style={{ width: `${lead.score}%` }} />
                   </div>
-                  <span className="text-xs font-semibold text-slate-700">{lead.score}/100</span>
+                  <span className="text-xs font-semibold text-muted">{lead.score}/100</span>
                 </div>
               </div>
             </div>

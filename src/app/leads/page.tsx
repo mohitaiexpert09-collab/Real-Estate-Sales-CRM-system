@@ -53,7 +53,7 @@ export default async function LeadsPage({ searchParams }: { searchParams: { tier
         <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-card">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-slate-100 bg-slate-50/60 text-left text-xs uppercase tracking-wide text-slate-500">
+              <tr className="border-b border-line bg-elevated text-left text-xs uppercase tracking-wide text-faint">
                 <th className="px-4 py-3 font-medium">Lead</th>
                 <th className="px-4 py-3 font-medium">Source</th>
                 <th className="px-4 py-3 font-medium">AI score</th>
@@ -65,7 +65,7 @@ export default async function LeadsPage({ searchParams }: { searchParams: { tier
             </thead>
             <tbody>
               {leads.map((l) => (
-                <tr key={l.id} className="group border-b border-slate-50 transition hover:bg-brand-50/40">
+                <tr key={l.id} className="group border-b border-line-soft transition hover:bg-elevated">
                   <td className="px-4 py-3">
                     <Link href={`/leads/${l.id}`} className="block">
                       <div className="font-medium text-slate-800 group-hover:text-brand-700">{l.name}</div>

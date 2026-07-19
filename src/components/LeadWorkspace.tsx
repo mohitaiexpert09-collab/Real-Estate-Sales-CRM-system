@@ -102,19 +102,21 @@ export default function LeadWorkspace({
         </div>
       </div>
 
-      <div className="scroll-thin flex-1 space-y-2.5 overflow-y-auto bg-[#e9f1ea] px-4 py-4" style={{ minHeight: 260, maxHeight: 360 }}>
+      <div className="scroll-thin flex-1 space-y-2.5 overflow-y-auto bg-[#e9f1ea] px-4 py-4 dark:bg-[#0b141a]" style={{ minHeight: 260, maxHeight: 360 }}>
         {messages.map((m) => (
           <div key={m.id} className={`flex ${m.direction === "out" ? "justify-end" : "justify-start"}`}>
             <div
               className={`max-w-[78%] rounded-2xl px-3 py-2 text-sm shadow-sm ${
-                m.direction === "out" ? "rounded-br-sm bg-[#d9fdd3] text-slate-800" : "rounded-bl-sm bg-white text-slate-800"
+                m.direction === "out"
+                  ? "rounded-br-sm bg-[#d9fdd3] text-[#111b21] dark:bg-[#005c4b] dark:text-[#e9edef]"
+                  : "rounded-bl-sm bg-[#ffffff] text-[#111b21] dark:bg-[#202c33] dark:text-[#e9edef]"
               }`}
             >
               {m.isAuto && m.direction === "out" && (
-                <div className="mb-0.5 text-[10px] font-semibold uppercase tracking-wide text-emerald-600">⚡ Auto-reply</div>
+                <div className="mb-0.5 text-[10px] font-semibold uppercase tracking-wide text-emerald-700 dark:text-emerald-300">⚡ Auto-reply</div>
               )}
               <div className="whitespace-pre-wrap leading-relaxed">{m.body}</div>
-              <div className="mt-0.5 text-right text-[10px] text-slate-400">{clockTime(m.createdAt)}</div>
+              <div className="mt-0.5 text-right text-[10px] text-[#667781] dark:text-[#8696a0]">{clockTime(m.createdAt)}</div>
             </div>
           </div>
         ))}
@@ -126,7 +128,7 @@ export default function LeadWorkspace({
           <button
             onClick={suggest}
             disabled={drafting}
-            className="inline-flex items-center gap-1.5 rounded-lg bg-brand-50 px-2.5 py-1.5 text-xs font-semibold text-brand-700 transition hover:bg-brand-100 disabled:opacity-60"
+            className="inline-flex items-center gap-1.5 rounded-lg bg-brand-50 px-2.5 py-1.5 text-xs font-semibold text-brand-700 transition hover:bg-brand-100 disabled:opacity-60 dark:bg-brand-500/15 dark:text-brand-300 dark:hover:bg-brand-500/25"
           >
             {drafting ? (
               <span className="h-3 w-3 animate-spin rounded-full border-2 border-brand-500 border-t-transparent" />

@@ -237,10 +237,10 @@ export default function BroadcastComposer() {
           <p className="mt-0.5 text-xs text-slate-500">
             As {previewLead ? previewLead.name.split(" ")[0] : "a lead"} will see it on WhatsApp
           </p>
-          <div className="mt-3 rounded-xl bg-[#e5ddd5] p-3" style={{ backgroundImage: "radial-gradient(rgba(0,0,0,.04) 1px, transparent 1px)", backgroundSize: "14px 14px" }}>
-            <div className="ml-auto max-w-[85%] rounded-lg rounded-tr-sm bg-[#dcf8c6] px-3 py-2 shadow-sm">
-              <div className="whitespace-pre-wrap text-[13px] leading-relaxed text-slate-800">{rendered || "Your message preview…"}</div>
-              <div className="mt-1 text-right text-[10px] text-slate-500">now ✓✓</div>
+          <div className="mt-3 rounded-xl bg-[#e5ddd5] p-3 dark:bg-[#0b141a]" style={{ backgroundImage: "radial-gradient(rgba(0,0,0,.04) 1px, transparent 1px)", backgroundSize: "14px 14px" }}>
+            <div className="ml-auto max-w-[85%] rounded-lg rounded-tr-sm bg-[#dcf8c6] px-3 py-2 shadow-sm dark:bg-[#005c4b]">
+              <div className="whitespace-pre-wrap text-[13px] leading-relaxed text-[#111b21] dark:text-[#e9edef]">{rendered || "Your message preview…"}</div>
+              <div className="mt-1 text-right text-[10px] text-[#667781] dark:text-[#8696a0]">now ✓✓</div>
             </div>
           </div>
         </section>
